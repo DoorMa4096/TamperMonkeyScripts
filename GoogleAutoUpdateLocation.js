@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         google location auto update
 // @namespace    http://tampermonkey.net/
-// @version      0.4.0
+// @version      0.4.1
 // @description  update google location automatically
 // @author       Door Ma
 // @match        https://www.google.com/search?q=*
@@ -16,23 +16,27 @@
 
     // 对于 search 的提交时间间隔
     setInterval(function() {
-        let element_search = document.querySelector('update-location');
-        if (element_search) {
-            element_search.click();
-        } else {
-            console.log('未找到更新按钮');
-            alert('未找到更新按钮');
+        if (window.location.href.includes('www.google.com/search?q=')) {
+            let element_search = document.querySelector('update-location');
+            if (element_search) {
+                element_search.click();
+            } else {
+                console.log('未找到更新按钮');
+                alert('未找到更新按钮');
+            }
         }
     }, 60000); // 毫秒，执行一次位置提交
 
     // 对于 gemini 的提交时间间隔
     setInterval(function() {
-        let element_gemini = document.querySelector('.update-location-text.location-clickable');
-        if (element_gemini) {
-            element_gemini.click();
-        } else {
-            console.log('未找到更新按钮');
-            alert('未找到更新按钮');
+        if (window.location.href.includes('gemini.google.com/app')) {
+            let element_gemini = document.querySelector('.update-location-text.location-clickable');
+            if (element_gemini) {
+                element_gemini.click();
+            } else {
+                console.log('未找到更新按钮');
+                alert('未找到更新按钮');
+            }
         }
     }, 3600000); // 毫秒，执行一次位置提交
 
