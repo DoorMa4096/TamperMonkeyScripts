@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         google location auto update
 // @namespace    http://tampermonkey.net/
-// @version      0.4.1
+// @version      0.4.2
 // @description  update google location automatically
 // @author       Door Ma
 // @match        https://www.google.com/search?q=*
@@ -25,7 +25,7 @@
                 alert('未找到更新按钮');
             }
         }
-    }, 60000); // 毫秒，执行一次位置提交
+    }, 600000); // 毫秒，执行一次位置提交
 
     // 对于 gemini 的提交时间间隔
     setInterval(function() {
