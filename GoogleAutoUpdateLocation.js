@@ -1,12 +1,10 @@
 // ==UserScript==
 // @name         google location auto update
 // @namespace    http://tampermonkey.net/
-// @version      0.5.0
+// @version      0.5.1
 // @description  update google location automatically
 // @author       Door Ma
 // @match        https://www.google.com/search?q=*
-// @match        https://bard.google.com/chat*
-// @match        https://gemini.google.com/app*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @grant        none
 // ==/UserScript==
