@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         google location auto update
 // @namespace    http://tampermonkey.net/
-// @version      0.4.2
+// @version      0.5.0
 // @description  update google location automatically
 // @author       Door Ma
 // @match        https://www.google.com/search?q=*
@@ -26,18 +26,5 @@
             }
         }
     }, 600000); // 毫秒，执行一次位置提交
-
-    // 对于 gemini 的提交时间间隔
-    setInterval(function() {
-        if (window.location.href.includes('gemini.google.com/app')) {
-            let element_gemini = document.querySelector('.update-location-text.location-clickable');
-            if (element_gemini) {
-                element_gemini.click();
-            } else {
-                console.log('未找到更新按钮');
-                alert('未找到更新按钮');
-            }
-        }
-    }, 3600000); // 毫秒，执行一次位置提交
 
 })();
