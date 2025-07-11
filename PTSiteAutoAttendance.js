@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PT site auto attendance (self use)
 // @namespace    http://tampermonkey.net/
-// @version      0.1.1
+// @version      0.1.2
 // @description  每天凌晨0点在pt站点进行签到
 // @author       Door Ma
 // @match        https://pt.btschool.club/*
@@ -47,7 +47,7 @@
 
     // 首次调度，并在每次触发后重新调度
     function scheduleDaily() {
-        const localPtSiteDomain = windows.location.href.host;
+        const localPtSiteDomain = window.location.href.host;
         const localPtSite = ptSites.find(e => {e.domain === LocalPtSiteDomain});
         const delay = getDelayToNextMidnight();
         console.log('[签到脚本] 下次将在', delay / 1000 / 60, '分钟后执行签到。');
