@@ -3,4 +3,7 @@
 ## GoogleAutoUpdateLocation
 Auto update your location on google services.
 
-This script is used on Tampermonkey.
+## PTSiteAutoAttendance
+Auto attendance the pt sites every day.
+
+These script is used on Tampermonkey.
