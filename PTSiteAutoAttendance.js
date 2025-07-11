@@ -48,7 +48,7 @@
     // 首次调度，并在每次触发后重新调度
     function scheduleDaily() {
         const localPtSiteDomain = window.location.href.host;
-        const localPtSite = ptSites.find(e => {e.domain === LocalPtSiteDomain});
+        const localPtSite = ptSites.find(e => {e.domain === localPtSiteDomain});
         const delay = getDelayToNextMidnight();
         console.log('[签到脚本] 下次将在', delay / 1000 / 60, '分钟后执行签到。');
         setTimeout(() => {
