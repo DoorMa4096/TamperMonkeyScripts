@@ -53,7 +53,7 @@
         const localPtSite = ptSites.find(e => e.domain === localPtSiteURL.host);
         console.log('[签到脚本] 当前站点信息', localPtSite);
         const delay = getDelayToNextMidnight();
-        if (localStorage.getItem('checkedDate') !== new Date().toDateString()) {
+        while (localStorage.getItem('checkedDate') !== new Date().toDateString()) {
             clickSign(localPtSite);
         }
         console.log('[签到脚本] 下次将在', delay / 1000 / 60, '分钟后执行签到。');
