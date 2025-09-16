@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PT site auto attendance (self use)
 // @namespace    http://tampermonkey.net/
-// @version      0.1.12
+// @version      0.1.13
 // @description  每天凌晨0点在pt站点进行签到
 // @author       Door Ma
 // @match        https://pt.btschool.club/*
@@ -45,17 +45,23 @@
         );
         return nextMidnight - now;
     }
+
+    // 点击失败时的重启等待（毫秒）
+    async function wait(miliseconds) {
+        return new Promise(action => setTimeout(action, miliseconds));
+    }
     
     // 首次调度，并在每次触发后重新调度
-    function scheduleDaily() {
+    async function scheduleDaily() {
         const localPtSiteURL = new URL(window.location.href);
         console.log('[签到脚本] 当前站点', localPtSiteURL.host);
         const localPtSite = ptSites.find(e => e.domain === localPtSiteURL.host);
         console.log('[签到脚本] 当前站点信息', localPtSite);
-        const delay = getDelayToNextMidnight();
         while (localStorage.getItem('checkedDate') !== new Date().toDateString()) {
             clickSign(localPtSite);
+            await wait(5000);
         }
+        const delay = getDelayToNextMidnight();
         console.log('[签到脚本] 下次将在', delay / 1000 / 60, '分钟后执行签到。');
         setTimeout(() => {
             location.reload();
