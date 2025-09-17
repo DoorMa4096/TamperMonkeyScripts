@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PT site auto attendance (self use)
 // @namespace    http://tampermonkey.net/
-// @version      0.1.13
+// @version      0.1.14
 // @description  每天凌晨0点在pt站点进行签到
 // @author       Door Ma
 // @match        https://pt.btschool.club/*
@@ -59,7 +59,7 @@
         console.log('[签到脚本] 当前站点信息', localPtSite);
         while (localStorage.getItem('checkedDate') !== new Date().toDateString()) {
             clickSign(localPtSite);
-            await wait(5000);
+            await wait(1000);
         }
         const delay = getDelayToNextMidnight();
         console.log('[签到脚本] 下次将在', delay / 1000 / 60, '分钟后执行签到。');
