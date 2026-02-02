@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PT site auto attendance (self use)
 // @namespace    http://tampermonkey.net/
-// @version      0.1.19
+// @version      0.2.0
 // @description  每天凌晨0点在pt站点进行签到
 // @author       Door Ma
 // @match        https://pt.btschool.club/*
@@ -15,23 +15,26 @@
     const ptSites = [{
       name: "BTSCHOOL",
       domain: "pt.btschool.club",
-      attendenceUrl: "index.php?action=addbonus"
+      attendenceUrl: "index.php?action=addbonus",
+      attendenceText: "未签到"
     }, {
       name: "库非",
       domain: "kufei.org",
-      attendenceUrl: "attendance.php"
+      attendenceUrl: "attendance.php",
+      attendenceText: "签到领魔力"
     }];
     
     // 点击签到链接
     async function clickSign(site) {
         const link = document.querySelector('a[href="' + site.attendenceUrl + '"]');
-        if (link) {
+        if (link && link.textContent === site.attendenceText) {
             link.click();
             console.log('[签到脚本] 已于', new Date().toLocaleString(), '执行点击。');
             localStorage.setItem('checkedDate', new Date().toDateString()); // 标志签到时间
         } else {
             console.warn('[签到脚本] 未找到签到按钮。');
             await wait(60000);
+            await location.reload();
         }
     }
 
