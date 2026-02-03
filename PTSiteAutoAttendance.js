@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PT site auto attendance (self use)
 // @namespace    http://tampermonkey.net/
-// @version      0.2.1
+// @version      0.2.2
 // @description  每天凌晨0点在pt站点进行签到
 // @author       Door Ma
 // @match        https://pt.btschool.club/*
@@ -16,12 +16,12 @@
       name: "BTSCHOOL",
       domain: "pt.btschool.club",
       attendenceUrl: "index.php?action=addbonus",
-      attendenceText: "未签到"
+      attendenceText: "每日签到"
     }, {
       name: "库非",
       domain: "kufei.org",
       attendenceUrl: "attendance.php",
-      attendenceText: "签到领魔力"
+      attendenceText: "签到得魔力"
     }];
     
     // 点击签到链接
